@@ -2,7 +2,8 @@
 
 Project was created as an assigment on _Intro to CS_ course at WSEI University in Kraków.
 
-##Goal of project
+
+## Goal of project
 
 Given 4 files
 | File name | Contents |
@@ -18,7 +19,7 @@ The program will output one file
 | _assignments.csv_ | Pairs of ids: _loan\_id_ and covering it _facility\_id_ |
 
 
-##Project structure
+## Project structure
 
 Solution was based on **Domain Driven Domain** approach and consists of 7 projects:
 | Project name | Responsibility |
