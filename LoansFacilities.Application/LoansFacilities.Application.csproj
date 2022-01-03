@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\FileValidator\LogParser.Core\LogParser.Core.csproj" />
+      <ProjectReference Include="..\LoansFacilities.Application.Contracts\LoansFacilities.Application.Contracts.csproj" />
+      <ProjectReference Include="..\LoansFacilities.Infrastructure.CsvParser\LoansFacilities.Infrastructure.CsvParser.csproj" />
+    </ItemGroup>
+
+</Project>
