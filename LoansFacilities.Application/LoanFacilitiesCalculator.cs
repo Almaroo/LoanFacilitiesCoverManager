@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using LoansFacilities.Application.Contracts.Interface;
 using LoansFacilities.Domain.Interface;
@@ -60,6 +59,7 @@ namespace LoansFacilities.Application
                     )
                     .Build();
 
+                // TODO rewrite to be not build environment dependent
                 var bankFilePath = $@"{Directory.GetCurrentDirectory()}/../../../Data/banks.csv";
                 _calculator._bankRepository = new CsvBankRepository(bankFilePath, csvBankLineParser);
 
@@ -210,7 +210,7 @@ namespace LoansFacilities.Application
                 return;
             }
             
-            // write header
+            // TODO write header
             csvLineWriter.WriteLine("loan_id", "facility_id");
             
             foreach (var facility in facilities)
