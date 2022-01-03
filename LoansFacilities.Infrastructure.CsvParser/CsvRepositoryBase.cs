@@ -33,7 +33,7 @@ namespace LoansFacilities.Infrastructure.CsvParser
             catch (Exception e)
             {
                 Console.WriteLine($"Failed to open file: ${_filePath}. Make sure it exists and is not used by other process");
-                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
             }
 
             return streamReader;

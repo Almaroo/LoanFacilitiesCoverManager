@@ -31,6 +31,8 @@ namespace LoansFacilities.Output
             
             timer.Stop();
             Console.WriteLine($"Task completed at {DateTime.Now:G}, took {timer.Elapsed.Seconds} seconds to complete");
+
+            Console.WriteLine();
         }
     }
 }

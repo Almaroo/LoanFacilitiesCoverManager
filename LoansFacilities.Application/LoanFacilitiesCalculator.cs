@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using LoansFacilities.Application.Contracts.Interface;
 using LoansFacilities.Domain.Interface;
@@ -58,8 +59,8 @@ namespace LoansFacilities.Application
                         MaxLength(30)
                     )
                     .Build();
-            
-                var bankFilePath = $@"{Directory.GetCurrentDirectory()}/banks.csv";
+
+                var bankFilePath = $@"{Directory.GetCurrentDirectory()}/../../../Data/banks.csv";
                 _calculator._bankRepository = new CsvBankRepository(bankFilePath, csvBankLineParser);
 
                 return this;
@@ -92,7 +93,7 @@ namespace LoansFacilities.Application
                     )
                     .Build();
 
-                var covenantFilePath = $@"{Directory.GetCurrentDirectory()}/covenants.csv";
+                var covenantFilePath = $@"{Directory.GetCurrentDirectory()}/../../../Data/covenants.csv";
                 _calculator._covenantRepository = new CsvCovenantRepository(covenantFilePath, csvCovenantLineParser);
 
                 return this;
@@ -126,7 +127,7 @@ namespace LoansFacilities.Application
                     )
                     .Build();
             
-                var facilityFilePath = $@"{Directory.GetCurrentDirectory()}/facilities.csv";
+                var facilityFilePath = $@"{Directory.GetCurrentDirectory()}/../../../Data/facilities.csv";
                 _calculator._facilityRepository = new CsvFacilityRepository(facilityFilePath, csvFacilityLineParser);
 
                 return this;
@@ -167,7 +168,7 @@ namespace LoansFacilities.Application
                     )
                     .Build();
             
-                var loanFilePath = $@"{Directory.GetCurrentDirectory()}/loans.csv";
+                var loanFilePath = $@"{Directory.GetCurrentDirectory()}/../../../Data/loans.csv";
                 _calculator._loanRepository = new CsvLoanRepository(loanFilePath, csvLoanLineParser);
 
                 return this;
@@ -197,7 +198,19 @@ namespace LoansFacilities.Application
             var loans = await GetLoansAsync();
             var facilities = await GetFacilitiesAsync();
 
-            using var csvLineWriter = new CsvLineWriter($@"{Directory.GetCurrentDirectory()}/assignments.csv");
+            // TODO rewrite in FP style with Option<> monad
+            CsvLineWriter csvLineWriter;
+            
+            try
+            {
+                csvLineWriter = new CsvLineWriter($@"{Directory.GetCurrentDirectory()}/../../../Data/assignments.csv");
+            }
+            catch
+            {
+                return;
+            }
+            
+            // write header
             csvLineWriter.WriteLine("loan_id", "facility_id");
             
             foreach (var facility in facilities)
@@ -213,6 +226,8 @@ namespace LoansFacilities.Application
                         csvLineWriter.WriteLine(loan.Id.ToString(), loan.CoveredFacility.ToString());
                 }
             }
+            
+            csvLineWriter.Dispose();
         }
     }
 }
