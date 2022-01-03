@@ -55,3 +55,6 @@ It is **crucial** that given files follow this **exact** format
 | _interest_rate_ | _amount_ | _id_ | _default\_likelihood_ | _state_ |
 | -- | -- | -- | -- | -- |
 | _float_, _not\_negative_, _not\_null_ |	_integer_, _not\_negative_, _not\_null_ | _integer_, _not\_null_ | _float_, _not\_negative_, _not\_null_ | _is\_valid\_us\_state_, _not\_null_ |
+
+### Successful run
+![Console output](/Images/screenshot.png)
