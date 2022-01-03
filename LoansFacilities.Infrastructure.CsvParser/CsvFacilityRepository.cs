@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using LoansFacilities.Domain.Interface;
 using LoansFacilities.Domain.Model;
 using LoansFacilities.Domain.Specification;
-using LoansFacilities.Infrastructure.CsvParser.Interface;
 using LogParser.Core.Interfaces;
 
 namespace LoansFacilities.Infrastructure.CsvParser

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using LoansFacilities.Application.Contracts.Dto;
 using LoansFacilities.Application.Contracts.Interface;
 using LoansFacilities.Domain.Interface;
 using LoansFacilities.Domain.Model;
@@ -37,8 +36,8 @@ namespace LoansFacilities.Application
         }
         
         public static ILoanFacilitiesCalculatorBuilder Create() => new Builder();
-        
-        public class Builder : ILoanFacilitiesCalculatorBuilder
+
+        private class Builder : ILoanFacilitiesCalculatorBuilder
         {
             private readonly LoanFacilitiesCalculator _calculator = new();
             

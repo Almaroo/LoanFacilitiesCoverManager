@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Timers;
 using LoansFacilities.Application;
 
 namespace LoansFacilities.Output
